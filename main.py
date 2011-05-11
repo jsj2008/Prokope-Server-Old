@@ -10,7 +10,6 @@ from google.appengine.ext.webapp import util
 from models.commentModel import CommentModel
 from models.documentModel import DocumentModel
 from models.mediaModel import MediaModel
-import rest
 from utility.templateLoader import TemplateLoader
 
 
@@ -26,22 +25,10 @@ class MainHandler(webapp.RequestHandler):
 application = webapp.WSGIApplication([
     ('/', MainHandler),
     (r'/document/?(.*)', DocumentHandler),
-    ('/rest/.*', rest.Dispatcher),
 #    ('/comment', controllers.comment.CommentHandler),
 #    (r'/media/?(.*)', controllers.media.MediaHandler),
 ], debug=True)
 
-# Configure the rest dispatcher to know what prefix to expect on request urls
-rest.Dispatcher.base_url = "/rest"
-
-# Add models to the restful interface.
-#  "document": Document,
-#  "comment": Comment})
-rest.Dispatcher.add_models({
-  "document" : (DocumentModel, rest.READ_ONLY_MODEL_METHODS),
-#  "comment" : (CommentModel, rest.READ_ONLY_MODEL_METHODS),
-#  "media" : (MediaModel, rest.READ_ONLY_MODEL_METHODS) 
-})
 
 
 def main():

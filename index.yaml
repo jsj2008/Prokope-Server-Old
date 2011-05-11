@@ -31,3 +31,13 @@ indexes:
   - name: author
   - name: date
     direction: desc
+
+- kind: DocumentModel
+  properties:
+  - name: author
+  - name: title
+
+- kind: DocumentModel
+  properties:
+  - name: author=
+  - name: title

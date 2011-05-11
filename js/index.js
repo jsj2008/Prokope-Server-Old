@@ -1,5 +1,5 @@
 /* Javascript Functions for the index page.
- * Copyright (c) 2010 D. Robert Adams
+ * Copyright (c) 2011 D. Robert Adams
  */
 
 /* ===========================================================================
@@ -18,7 +18,7 @@ $(document).ready(function()
     // as <li><a href="/document/KEY">TITLE</a></li>
     var author = $("#nickname").html();
     $.ajax({
-        url: "/rest/document?include_props=key,title&feq_author=" + author,
+        url: "/document",
         dataType: "xml",
         success: function(xml) {
             $("#doc_list").html(""); // clear out the current list

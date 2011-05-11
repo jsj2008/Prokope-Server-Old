@@ -5,6 +5,7 @@ Copyright 2011 D. Robert Adams
 
 from google.appengine.ext.webapp import RequestHandler
 from google.appengine.ext import db
+from google.appengine.api import users
 from models.documentModel import DocumentModel
 from google.appengine import api
 from utility.templateLoader import TemplateLoader
@@ -15,16 +16,32 @@ class DocumentHandler(RequestHandler):
 
     """======================================================================
        HTTP GET Handler.  Displays a document.
-       Should receive "id" with the key of the document to show."""
+       We may receive the key of the document to show."""
     def get(self, keyStr):
         
-        # If we have a document id (keyStr), fetch and display the document.
+        self.response.headers['Content-Type'] = "application/xml"
+        
+        # If we have a document key, fetch and display the document.
         if keyStr:
             doc = db.get(keyStr) 
             if not doc:
                 self.response.out.write("Error")
             else:
                 self.response.out.write(doc.content)
+            return
+            
+        # If no document key is given, display a list of all owned documents.
+        user = users.get_current_user()
+        q = DocumentModel.all().filter("author =", user).order("title")
+        results = q.fetch(100)
+        self.response.out.write("<list>")
+        for p in results:
+            self.response.out.write("""
+                <document>
+                    <title>%s</title>
+                    <key>%s</key>
+                </document>""" % (p.title, p.key()) )
+        self.response.out.write("</list>")
                 
        
     """======================================================================
