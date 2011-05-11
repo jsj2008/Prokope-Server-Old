@@ -25,9 +25,9 @@ class MainHandler(webapp.RequestHandler):
 # Set up the application handlers.
 application = webapp.WSGIApplication([
     ('/', MainHandler),
-#    ('/comment', controllers.comment.CommentHandler),
     (r'/document/?(.*)', DocumentHandler),
     ('/rest/.*', rest.Dispatcher),
+#    ('/comment', controllers.comment.CommentHandler),
 #    (r'/media/?(.*)', controllers.media.MediaHandler),
 ], debug=True)
 
@@ -39,8 +39,8 @@ rest.Dispatcher.base_url = "/rest"
 #  "comment": Comment})
 rest.Dispatcher.add_models({
   "document" : (DocumentModel, rest.READ_ONLY_MODEL_METHODS),
-  "comment" : (CommentModel, rest.READ_ONLY_MODEL_METHODS),
-  "media" : (MediaModel, rest.READ_ONLY_MODEL_METHODS) 
+#  "comment" : (CommentModel, rest.READ_ONLY_MODEL_METHODS),
+#  "media" : (MediaModel, rest.READ_ONLY_MODEL_METHODS) 
 })
 
 

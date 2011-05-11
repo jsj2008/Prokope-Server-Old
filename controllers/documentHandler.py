@@ -4,20 +4,28 @@ Copyright 2011 D. Robert Adams
 """
 
 from google.appengine.ext.webapp import RequestHandler
+from google.appengine.ext import db
 from models.documentModel import DocumentModel
 from google.appengine import api
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
+
 
 class DocumentHandler(RequestHandler):
 
     """======================================================================
        HTTP GET Handler.  Displays a document.
        Should receive "id" with the key of the document to show."""
-    """    def get(self, keyStr):
-        self.response.out.write(
-            utility.template_loader.TemplateLoader.render_template('show.html') )
-            """
+    def get(self, keyStr):
+        
+        # If we have a document id (keyStr), fetch and display the document.
+        if keyStr:
+            doc = db.get(keyStr) 
+            if not doc:
+                self.response.out.write("Error")
+            else:
+                self.response.out.write(doc.content)
+                
        
     """======================================================================
        Handles the uploading of new documents.
