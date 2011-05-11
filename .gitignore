@@ -1,0 +1,5 @@
+# Compiled python
+*.pyc
+
+# osx noise
+.DS_Store
