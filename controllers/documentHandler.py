@@ -32,7 +32,6 @@ class DocumentHandler(RequestHandler):
         try:
             # Create a new document.
             document = DocumentModel()
-            document.author = api.users.get_current_user()
             document.title = self.request.get("doc_title")
             document.content = self.request.get("doc_content")
 

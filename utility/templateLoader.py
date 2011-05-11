@@ -33,7 +33,7 @@ class TemplateLoader(object):
         user = google.appengine.api.users.get_current_user()
         if user:
             url_link = google.appengine.api.users.create_logout_url("/")
-            nickname = user.nickname()
+            nickname = user.email()
         else:
             url_link = google.appengine.api.users.create_login_url("/")
             nickname = None
