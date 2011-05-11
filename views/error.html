@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="contentbox">
+	<h2>Error</h2>
+	<p>{{error_message}}</p>
+	<p>Click the logo at the top to return to the main page, or click the
+		back button to return to the previous page.</p>
+	<p>{{exception_details}}</p>
+</div>
+
+{% endblock %}

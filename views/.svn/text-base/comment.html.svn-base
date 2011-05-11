@@ -1,0 +1,7 @@
+<li xref="{{comment.anchor}}">
+	<span class="comment_key" style="display: none">{{comment.key}}</span>
+	<span class="comment_title">{{comment.title}}:</span>
+	<span class="comment_content">{{comment.content}}</span>
+	<span class="comment_type">[{{comment.type}}]</span>
+	<span class="comment_public">{{comment.public}}</span>
+</li>

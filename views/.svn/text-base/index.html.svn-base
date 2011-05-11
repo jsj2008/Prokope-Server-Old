@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<link type="text/css" href="/stylesheets/smoothness/jquery-ui-1.8.custom.css" rel="stylesheet" />	
+
+<script type="text/javascript" src="/js/index.js"></script>
+
+	<div id="sidebar">
+		<h2>Documents</h2>
+		<ul id="doc_list">
+		</ul>
+				
+		{% if nickname %}
+		<p><a href="#" id="upload_form_label">Upload New Document</a></p>
+		<form id="upload_form" action="/document" enctype="multipart/form-data" method="post">
+			Title: <input type="text" name="doc_title" /> <br/>
+		    File: <input type="file" name="doc_content"/> <br/>
+		    <input type="submit" value="Upload">
+		</form>
+		{% endif %}
+	</div>
+	
+	<div class="contentbox">
+		<h2>Welcome</h2>
+		<p>The Prokope Project is an experimental project aimed at
+			investigating how scholars and students interact with classical
+			texts, providing their own translations, annotations, and
+			commentary.</p>
+	</div>
+
+{% endblock %}
+	

@@ -1,0 +1,162 @@
+
+/* These are m4 macros.  To process in TextMate, try Apple-B then "Replace Constants" */
+
+
+ 
+
+
+
+
+
+
+body {
+    background-color:#FFFFFF;
+    font-family:Arial;
+    margin:0;
+    padding:0;
+    color: #333333;
+}
+
+/*=== Comments ===*/
+
+/* A word that has a comment. */
+.commented {
+    border-bottom: 1px dotted #cccccc;
+}
+
+/* A comment whose target word is currently selected. */
+.selected_comment {
+    background-color: #cccccc;
+}
+
+/* The list of comments on the current document. */
+#comments {
+    padding-left: 0;
+    overflow: scroll; 
+    height: 300px; /* This will be overriden by javascript on page load. */
+}
+#comments li {
+    list-style: none;
+    margin-bottom: 0.5em;
+}
+
+/* The displayed title of the comment. */
+.comment_title {
+    font-weight: bold;
+}
+
+/* The displayed type of comment. */
+.comment_type {
+    font-size: 80%;
+    color: #888888;
+}
+
+.comment_public {
+    display: none;
+}
+
+/*=== Media ===*/
+
+.thumbnail {
+    height: 1em; border: 1px black solid; vertical-align: bottom;
+}
+
+.audio {
+    height: 1.2em; text-align: bottom;
+}
+
+/*=== Header  === */
+#header {
+   /* background-color: #6666ff; */
+   color: #273B59;
+   margin: 1em;
+   border-bottom: 1px dotted #cccccc;
+}
+
+.description {
+    font-size:14pt;
+    color:#7AAADE;
+    margin:0;
+}
+
+#loginarea {
+    float: right;
+    color: #7AAADE;
+}
+
+h1, h1 a {
+    text-decoration: none;
+    color: #273B59;
+    font-size: 2em;
+    margin:0;
+    padding: 0;
+}
+
+/*=== Main Content Area === */
+#mainarea {
+    padding: 1em;
+    clear: both;
+    line-height:14pt;
+}
+
+.contentbox {
+    width:60%;
+    padding: 1em 1em 1em 1em;
+    background-color: white; 
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    line-height: 1.5em;
+}
+
+/*=== Sidebar ===*/
+#sidebar {
+    float:right;
+    width:33%;
+    padding: 0.25em;
+    margin-right: 2em;
+    background-color: #dddddd;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+#sidebar h2 {
+    color: #273B59;
+    padding-top: 0.5em;
+}
+#sidebar h2 a:visited {
+    color: #273B59;
+}
+
+/*=== Footer ===*/
+#footer {
+    clear:both;
+    text-align:center;
+    line-height:14pt;
+    font-size: 90%;
+    color: #A199A1;
+}
+
+#about {
+    font-size: 90%;
+}
+
+#help {
+    font-size: 90%;
+}
+
+/*=== Generic Styling ===*/
+
+h2 {
+    color:#7AAADE;
+    padding: 0;
+    padding-bottom: 0.5em;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    width: 100%;
+}

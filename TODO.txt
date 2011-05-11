@@ -1,0 +1,3 @@
+* Show audio RESTfully.
+* Only allow upload of documents, comments, and media if logged in.
+* Only allow upload of comments and media on documents that you own.

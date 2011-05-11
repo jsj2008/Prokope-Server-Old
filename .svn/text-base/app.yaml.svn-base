@@ -1,0 +1,17 @@
+application: prokope-project
+version: 2-test
+runtime: python
+api_version: 1
+
+handlers:
+- url: /images
+  static_dir: images
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /js
+  static_dir: js
+
+- url: .*
+  script: main.py

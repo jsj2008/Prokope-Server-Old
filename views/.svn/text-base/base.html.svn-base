@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+	<title>Prokope</title>
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen">
+	<link type="text/css" href="/stylesheets/smoothness/jquery-ui-1.8.custom.css" rel="stylesheet" />		
+
+	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.custom.min.js"></script>
+
+	<script type="text/javascript" src="/js/base.js"></script>
+</head>
+
+<body>
+	
+	<div id="header">	
+			
+		<div id="loginarea">
+			{% if nickname %}
+				Logged in as {{nickname}}  (<a href="{{url_link}}">Sign out</a>)
+			{% else %}
+				Please <a href="{{url_link}}">register or sign in</a>.
+			{% endif %}
+		</div>		
+		
+		<h1><a href="/">Prokope</a></h1>
+		<div class="description">Advancement in the Face of Adversity</div>
+		
+	</div>
+	
+	<div id="mainarea">
+		
+		{% block content %}
+		{% endblock %}
+				
+	</div>
+	
+	<div id="footer">
+		<a href="/">Home</a> | 	
+		<a id="about_link" href="#">About</a> | 
+		<a id="help_link" href="#">Help</a>
+		<br/>
+		Designed by the Project Prokope Team
+	</div>
+	
+	<div id="about">
+		<h3>Version 0.3</h3>
+		<p>Prokope is an experimental project investigating a mashup of
+			classical texts and social networking.  For more information
+			contact us at <a href="mailto:d.robert.adams@gmail.com">d.robert.adams@gmail.com</a>.</p>		
+	</div>
+	
+	<div id="help">
+		<p>You should see at least one document in the sidebar.  Click on it
+			to show the text.</p>
+		<p>When viewing a document, you can mouseover the underlined text to
+        highlight the associated comments. You can click on the comment type
+        (in square brackets) to hide those types of comments. To re-display
+        them you can click its name at the bottom of the commentary
+        sidebar.  Click on a word to attach a new multimedia file to the word.</p>
+	</div>
+
+</body>
+
+</html>

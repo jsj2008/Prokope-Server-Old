@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% comment %}
+	<div id="sidebar">
+		<h2>My Documents</h2>
+		<ul>
+		{% for doc in docs %}
+		<li><a href="/document?id={{doc.key}}">{{doc.title}}</a></li>
+		{% endfor %}
+		</ul>
+		
+		<p><a href="/document?op=browse">Browse All Documents</a></p>
+			
+		{% if nickname %}
+		<p><a href="#" id="upload_form_label">Upload New Document</a></p>
+		<form id="upload_form" action="/document" enctype="multipart/form-data" method="post">
+			Title: <input type="text" name="doc_title" /> <br/>
+		    File: <input type="file" name="doc_content"/> <br/>
+		    <input type="submit" value="Upload">
+		</form>
+		{% endif %}
+	</div>
+{% endcomment %}
+	
+	<div class="contentbox">
+		<h2>All Documents</h2>
+		<ul>
+		{% for doc in docs %}
+		<li><a href="/document?id={{doc.key}}">{{doc.title}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+
+{% endblock %}
