@@ -16,32 +16,10 @@ class DocumentHandler(RequestHandler):
 
     """======================================================================
        HTTP GET Handler.  Displays a document.
-       We may receive the key of the document to show."""
-    def get(self, keyStr):
-        
-        self.response.headers['Content-Type'] = "application/xml"
-        
-        # If we have a document key, fetch and display the document.
-        if keyStr:
-            doc = db.get(keyStr) 
-            if not doc:
-                self.response.out.write("Error")
-            else:
-                self.response.out.write(doc.content)
-            return
-            
-        # If no document key is given, display a list of all owned documents.
-        user = users.get_current_user()
-        q = DocumentModel.all().filter("author =", user).order("title")
-        results = q.fetch(100)
-        self.response.out.write("<list>")
-        for p in results:
-            self.response.out.write("""
-                <document>
-                    <title>%s</title>
-                    <key>%s</key>
-                </document>""" % (p.title, p.key()) )
-        self.response.out.write("</list>")
+       We must receive the key of the document to show."""
+    def get(self, keyStr):        
+        self.response.out.write(TemplateLoader.renderTemplate('show.html', document_id=keyStr))
+
                 
        
     """======================================================================

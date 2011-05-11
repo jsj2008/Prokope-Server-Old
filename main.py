@@ -4,7 +4,9 @@ Controller for the main application.
 Copyright 2011 D. Robert Adams
 """
 
+import logging
 from controllers.documentHandler import DocumentHandler
+from controllers.restHandler import RestHandler
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
 from models.commentModel import CommentModel
@@ -25,6 +27,7 @@ class MainHandler(webapp.RequestHandler):
 application = webapp.WSGIApplication([
     ('/', MainHandler),
     (r'/document/?(.*)', DocumentHandler),
+    (r'/rest/?(\w*)/?(\w*)', RestHandler),
 #    ('/comment', controllers.comment.CommentHandler),
 #    (r'/media/?(.*)', controllers.media.MediaHandler),
 ], debug=True)
@@ -32,6 +35,7 @@ application = webapp.WSGIApplication([
 
 
 def main():
+    logging.getLogger().setLevel(logging.DEBUG)
     webapp.util.run_wsgi_app(application)
 
 
