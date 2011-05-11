@@ -1,7 +1,7 @@
 """ 
 Utility class to load and render a template.  Automatically fetches the
 current user and his nickname.
-Copyright 2010 D. Robert Adams
+Copyright 2011 D. Robert Adams
 """
 
 import google.appengine.api.users
@@ -13,10 +13,10 @@ class TemplateLoader(object):
     
     VIEWS_DIR = "views"
     
-    """======================================================================
-       Loads the given template passing it the named values on the argument
-       list.  Returns the text of the template.  nickname is automatically
-       passed to every template.
+    #**********************************************************************
+    """ Loads the given template passing it the named values on the argument
+       list.  Returns the text of the template.  The "nickname" of the
+       user and the login "url_link" is automatically passed to every template.
        
        Typical usage:
            self.response.out.write(
@@ -27,7 +27,7 @@ class TemplateLoader(object):
     			))
     """
     @classmethod
-    def render_template(cls, template_name, **template_values):
+    def renderTemplate(cls, template_name, **template_values):
         # Assumes views are in "../views" from here.
         path = os.path.join(os.path.dirname(__file__), '..', TemplateLoader.VIEWS_DIR, template_name)
         user = google.appengine.api.users.get_current_user()
@@ -42,12 +42,11 @@ class TemplateLoader(object):
         template_values['url_link'] = url_link
         return google.appengine.ext.webapp.template.render(path, template_values)
         
-    """======================================================================
-       Renders the error template.  The only parameter required is the
-       error message you want to display.
-    """
+    #**********************************************************************
+    """Renders the error template.  The only parameter required is the
+       error message you want to display."""
     @classmethod
-    def render_error(cls, message):
+    def renderError(cls, message):
         user = google.appengine.api.users.get_current_user()
         if user:
             url_link = google.appengine.api.users.create_logout_url("/")

@@ -5,21 +5,21 @@
 
 <script type="text/javascript" src="/js/index.js"></script>
 
+	{% if nickname %}
 	<div id="sidebar">
-		<h2>Documents</h2>
-		<ul id="doc_list">
-		</ul>
-				
-		{% if nickname %}
 		<p><a href="#" id="upload_form_label">Upload New Document</a></p>
 		<form id="upload_form" action="/document" enctype="multipart/form-data" method="post">
 			Title: <input type="text" name="doc_title" /> <br/>
 		    File: <input type="file" name="doc_content"/> <br/>
 		    <input type="submit" value="Upload">
 		</form>
-		{% endif %}
-	</div>
 	
+		<h2>My Documents</h2>
+		<ul id="doc_list">
+		</ul>
+	</div>	
+	{% endif %}
+		
 	<div class="contentbox">
 		<h2>Welcome</h2>
 		<p>The Prokope Project is an experimental project aimed at

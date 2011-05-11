@@ -10,18 +10,4 @@ $(document).ready(function()
         $('#about').dialog('open');
         return false;
     });
-    
-    // Prepare the help dialog box.
-    $('#help').dialog( {autoOpen: false, title: "Help"} );
-    $('#help_link').click(function() {
-        $('#help').dialog('open');
-        return false;
-    });
-    
-    // Hide the upload document form and attach a click handler to toggle its display.
-    $("#upload_form").hide();
-    $("#upload_form_label").click(function() {
-        $('#upload_form').toggle('blind');
-     	return false;
-    });
 });

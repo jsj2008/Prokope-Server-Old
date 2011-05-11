@@ -5,7 +5,7 @@ Copyright 2010 D. Robert Adams
 
 from google.appengine.ext import db
 
-class Document(db.Model):
+class DocumentModel(db.Model):
     author = db.UserProperty()
     title = db.StringProperty()
     content = db.TextProperty()
