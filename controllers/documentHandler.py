@@ -10,6 +10,7 @@ from google.appengine import api
 from models.documentModel import DocumentModel
 from models.commentModel import CommentModel
 from models.vocabModel import VocabModel
+from models.sidebarModel import SidebarModel
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
 
@@ -40,11 +41,19 @@ class DocumentHandler(RequestHandler):
             vocab = results[0].content
         else:
             vocab = "None"
+
+        # Fetch the sidebar data for this document.
+        q = SidebarModel.all().filter("document = ", db.Key(key))
+        results = q.fetch(1)
+        if len(results) > 0:
+            sidebar = results[0].content
+        else:
+            sidebar = "None"
         
         # Render the document display view.
         self.response.out.write(TemplateLoader.renderTemplate('show.html', 
             document_id=key, document_content=doc.content, document_title=doc.title,
-            commentary=comment, vocabulary=vocab))
+            commentary=comment, vocabulary=vocab, sidebar=sidebar))
 
                 
        
