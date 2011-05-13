@@ -32,8 +32,8 @@ body {
 /* The list of comments on the current document. */
 #comments {
     padding-left: 0;
-    overflow: scroll; 
-    height: 300px; /* This will be overriden by javascript on page load. */
+ /*   overflow: scroll; */
+  /*  height: 300px;*/ /* This will be overriden by javascript on page load. */
 }
 #comments li {
     list-style: none;
@@ -51,19 +51,7 @@ body {
     color: #888888;
 }
 
-.comment_public {
-    display: none;
-}
 
-/*=== Media ===*/
-
-.thumbnail {
-    height: 1em; border: 1px black solid; vertical-align: bottom;
-}
-
-.audio {
-    height: 1.2em; text-align: bottom;
-}
 
 /*=== Header  === */
 #header {
@@ -100,31 +88,12 @@ h1, h1 a {
 }
 
 .contentbox {
-    width:60%;
+   /* width:60%; */
     padding: 1em 1em 1em 1em;
     background-color: white; 
     border: 1px solid #cccccc;
     border-radius: 5px;
     line-height: 1.5em;
-}
-
-/*=== Sidebar ===*/
-#sidebar {
-    float:right;
-    width:33%;
-    padding: 0.25em;
-    margin-right: 2em;
-    background-color: #dddddd;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-}
-
-#sidebar h2 {
-    color: #273B59;
-    padding-top: 0.5em;
-}
-#sidebar h2 a:visited {
-    color: #273B59;
 }
 
 /*=== Footer ===*/

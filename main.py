@@ -6,6 +6,7 @@ Copyright 2011 D. Robert Adams
 
 import logging
 from controllers.documentHandler import DocumentHandler
+from controllers.commentHandler import CommentHandler
 from controllers.restHandler import RestHandler
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
@@ -26,10 +27,9 @@ class MainHandler(webapp.RequestHandler):
 # Set up the application handlers.
 application = webapp.WSGIApplication([
     ('/', MainHandler),
+    ('/comment', CommentHandler),
     (r'/document/?(.*)', DocumentHandler),
     (r'/rest/?(\w*)/?(\w*)', RestHandler),
-#    ('/comment', controllers.comment.CommentHandler),
-#    (r'/media/?(.*)', controllers.media.MediaHandler),
 ], debug=True)
 
 

@@ -6,10 +6,13 @@ Copyright 2011 D. Robert Adams
 from google.appengine.ext.webapp import RequestHandler
 from google.appengine.ext import db
 from google.appengine.api import users
-from models.documentModel import DocumentModel
 from google.appengine import api
+from models.documentModel import DocumentModel
+from models.commentModel import CommentModel
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
+
+import logging
 
 
 class DocumentHandler(RequestHandler):
@@ -17,8 +20,23 @@ class DocumentHandler(RequestHandler):
     """======================================================================
        HTTP GET Handler.  Displays a document.
        We must receive the key of the document to show."""
-    def get(self, keyStr):        
-        self.response.out.write(TemplateLoader.renderTemplate('show.html', document_id=keyStr))
+    def get(self, key):      
+        # Fetch the document
+        doc = db.get(key) 
+        
+        # Fetch the commentary for this document.
+        q = CommentModel.all().filter("document = ", db.Key(key))
+        results = q.fetch(1)
+        if len(results) > 0:
+            comment = results[0].content
+        else:
+            comment = "None"
+                
+        
+        # Render the document display view.
+        self.response.out.write(TemplateLoader.renderTemplate('show.html', 
+            document_id=key, document_content=doc.content, document_title=doc.title,
+            commentary=comment))
 
                 
        
