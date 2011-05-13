@@ -17,7 +17,7 @@
 	{% if nickname %}
 	<p><a href="#" id="upload_comment_form_label">Upload Comments</a></p>
 	<form id="upload_comment_form" action="/comment" enctype="multipart/form-data" method="post">
-		<input type="hidden" name="doc_key" value="TBA" />
+		<input type="hidden" name="doc_key" value="" />
 	    File: <input type="file" name="commentary"/> <br/>
 	    <input type="submit" value="Upload">
 	</form>
@@ -26,10 +26,11 @@
 
 <div class="contentbox" id="vocabulary">
 	<h2>Vocabulary</h2>
+	{{vocabulary}}
 	{% if nickname %}
 	<p><a href="#" id="upload_vocab_form_label">Upload Vocabulary</a></p>
-	<form id="upload_vocab_form" action="/vocabulary" enctype="multipart/form-data" method="post">
-		<input type="hidden" name="doc_key" value="TBA" />
+	<form id="upload_vocab_form" action="/vocab" enctype="multipart/form-data" method="post">
+		<input type="hidden" name="doc_key" value="" />
 	    File: <input type="file" name="vocabulary"/> <br/>
 	    <input type="submit" value="Upload">
 	</form>
@@ -41,7 +42,7 @@
 	{% if nickname %}
 	<p><a href="#" id="upload_sidebar_form_label">Upload Sidebar</a></p>
 	<form id="upload_sidebar_form" action="/sidebar" enctype="multipart/form-data" method="post">
-		<input type="hidden" name="doc_key" value="TBA" />
+		<input type="hidden" name="doc_key" value="" />
 	    File: <input type="file" name="sidebar"/> <br/>
 	    <input type="submit" value="Upload">
 	</form>

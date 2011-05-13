@@ -9,6 +9,7 @@ from google.appengine.api import users
 from google.appengine import api
 from models.documentModel import DocumentModel
 from models.commentModel import CommentModel
+from models.vocabModel import VocabModel
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
 
@@ -32,11 +33,18 @@ class DocumentHandler(RequestHandler):
         else:
             comment = "None"
                 
+        # Fetch the vocabulary for this document.
+        q = VocabModel.all().filter("document = ", db.Key(key))
+        results = q.fetch(1)
+        if len(results) > 0:
+            vocab = results[0].content
+        else:
+            vocab = "None"
         
         # Render the document display view.
         self.response.out.write(TemplateLoader.renderTemplate('show.html', 
             document_id=key, document_content=doc.content, document_title=doc.title,
-            commentary=comment))
+            commentary=comment, vocabulary=vocab))
 
                 
        

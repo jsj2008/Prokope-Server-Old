@@ -7,12 +7,10 @@ Copyright 2011 D. Robert Adams
 import logging
 from controllers.documentHandler import DocumentHandler
 from controllers.commentHandler import CommentHandler
+from controllers.vocabHandler import VocabHandler
 from controllers.restHandler import RestHandler
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
-from models.commentModel import CommentModel
-from models.documentModel import DocumentModel
-from models.mediaModel import MediaModel
 from utility.templateLoader import TemplateLoader
 
 
@@ -30,6 +28,7 @@ application = webapp.WSGIApplication([
     ('/comment', CommentHandler),
     (r'/document/?(.*)', DocumentHandler),
     (r'/rest/?(\w*)/?(\w*)', RestHandler),
+    ('/vocab', VocabHandler),
 ], debug=True)
 
 
