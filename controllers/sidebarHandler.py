@@ -42,8 +42,8 @@ class SidebarHandler(RequestHandler):
             
             # Make sure there is a "sidebar" element.  We probably need to make more checks
             # here for more robust upload.
-            #if not dom.getElementsByTagName("sidebar"):
-            #    raise TypeError("No \"sidebar\" element exists in the sidebar.")
+            if not dom.getElementsByTagName("sidebar"):
+                raise TypeError("No \"sidebar\" element exists in the sidebar.")
             
             # Store the sidebar.
             sidebar.put()

@@ -38,16 +38,24 @@ class RestHandler(RequestHandler):
             docElements = docHandler.getDocumentComponents(key)
             
             doc = docElements["document"] 
+            comment = docElements["commentary"]
+            vocab = docElements["vocabulary"]
+            sidebar = docElements["sidebar"]
             if not doc:
                 self.response.out.write("Error")
             else:
                 self.response.out.write("""
                 <document>
-                    <title>%s</title>
-                    <author>%s</author>
-                    <content>%s</content>
+                    <text>
+                        <title>%s</title>
+                        <author>%s</author>
+                        <content>%s</content>
+                    </text>
+                    %s
+                    %s
+                    %s
                 </document>
-                """ % (doc.title, doc.author, doc.content))
+                """ % (doc.title, doc.author, doc.content, comment, vocab, sidebar))
             return
             
         # If no document key is given, display a list of all owned documents.
