@@ -18,13 +18,19 @@ import logging
 
 
 class DocumentHandler(RequestHandler):
-
-    """======================================================================
-       HTTP GET Handler.  Displays a document.
-       We must receive the key of the document to show."""
-    def get(self, key):      
+    
+    #*******************************************************************************************
+    def getDocumentComponents(self, key):
+        """Gets the document, commentary, vocabulary, and sidebar data corresponding to the given
+           document key. Returns a hash {"document", "commentary", "vocabulary", and "sidebar"} of
+           model objects.
+        """
+        
+        retval = {}
+        
         # Fetch the document
         doc = db.get(key) 
+        retval["document"] = doc
         
         # Fetch the commentary for this document.
         q = CommentModel.all().filter("document = ", db.Key(key))
@@ -33,6 +39,7 @@ class DocumentHandler(RequestHandler):
             comment = results[0].content
         else:
             comment = "None"
+        retval["commentary"] = comment
                 
         # Fetch the vocabulary for this document.
         q = VocabModel.all().filter("document = ", db.Key(key))
@@ -41,6 +48,7 @@ class DocumentHandler(RequestHandler):
             vocab = results[0].content
         else:
             vocab = "None"
+        retval["vocabulary"] = vocab
 
         # Fetch the sidebar data for this document.
         q = SidebarModel.all().filter("document = ", db.Key(key))
@@ -49,6 +57,22 @@ class DocumentHandler(RequestHandler):
             sidebar = results[0].content
         else:
             sidebar = "None"
+        retval["sidebar"] = sidebar
+        
+        return retval        
+        
+
+    """======================================================================
+       HTTP GET Handler.  Displays a document.
+       We must receive the key of the document to show."""
+    def get(self, key):  
+        
+        docElements = self.getDocumentComponents(key)  
+          
+        doc = docElements["document"] 
+        comment = docElements["commentary"]
+        vocab = docElements["vocabulary"]
+        sidebar = docElements["sidebar"]
         
         # Render the document display view.
         self.response.out.write(TemplateLoader.renderTemplate('show.html', 

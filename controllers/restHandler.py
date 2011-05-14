@@ -8,9 +8,12 @@ from google.appengine.ext.webapp import RequestHandler
 from google.appengine.ext import db
 from google.appengine.api import users
 from models.documentModel import DocumentModel
+from controllers.documentHandler import DocumentHandler
 from google.appengine import api
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
+
+import logging
 
 
 class RestHandler(RequestHandler):
@@ -31,7 +34,10 @@ class RestHandler(RequestHandler):
         
         # If we have a document key, fetch and display the document.
         if key:
-            doc = db.get(key) 
+            docHandler = DocumentHandler()
+            docElements = docHandler.getDocumentComponents(key)
+            
+            doc = docElements["document"] 
             if not doc:
                 self.response.out.write("Error")
             else:

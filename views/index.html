@@ -5,6 +5,20 @@
 
 <script type="text/javascript" src="/js/index.js"></script>
 
+	<div class="contentbox">
+		<h2>Welcome</h2>
+		<p>The Prokope Project is an experimental project aimed at
+			investigating how scholars and students interact with classical
+			texts, providing their own translations, annotations, and
+			commentary.</p>
+	</div>
+	
+	<br/>
+	
+	<h2>My Documents</h2>
+	<ul id="doc_list">
+	</ul>
+
 	{% if nickname %}
 	<div id="sidebar">
 		<p><a href="#" id="upload_form_label">Upload New Document</a></p>
@@ -14,19 +28,10 @@
 		    <input type="submit" value="Upload">
 		</form>
 	
-		<h2>My Documents</h2>
-		<ul id="doc_list">
-		</ul>
 	</div>	
 	{% endif %}
 		
-	<div class="contentbox">
-		<h2>Welcome</h2>
-		<p>The Prokope Project is an experimental project aimed at
-			investigating how scholars and students interact with classical
-			texts, providing their own translations, annotations, and
-			commentary.</p>
-	</div>
+
 
 {% endblock %}
 	
