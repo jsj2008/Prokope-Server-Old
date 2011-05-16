@@ -30,7 +30,10 @@ class DocumentHandler(RequestHandler):
         
         # Fetch the document
         doc = db.get(key) 
+        # Convert "sections" into "p" (paragraphs).
+        doc.content = doc.content.replace("<section", "<p").replace("</section", "</p")
         retval["document"] = doc
+        
         
         # Fetch the commentary for this document.
         q = CommentModel.all().filter("document = ", db.Key(key))
@@ -39,6 +42,8 @@ class DocumentHandler(RequestHandler):
             comment = results[0].content
         else:
             comment = "None"
+        # Convert "comment" to "li" (list items).
+        comment = comment.replace("<comment ", "<li ").replace("</comment>", "</li>")
         retval["commentary"] = comment
                 
         # Fetch the vocabulary for this document.
@@ -48,6 +53,7 @@ class DocumentHandler(RequestHandler):
             vocab = results[0].content
         else:
             vocab = "None"
+        vocab = vocab.replace("<vocab ", "<li ").replace("</vocab>", "</li>")
         retval["vocabulary"] = vocab
 
         # Fetch the sidebar data for this document.
