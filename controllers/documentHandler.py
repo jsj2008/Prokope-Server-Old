@@ -32,8 +32,13 @@ class DocumentHandler(RequestHandler):
         doc = db.get(key) 
         # Convert "sections" into "p" (paragraphs).
         doc.content = doc.content.replace("<section", "<p").replace("</section", "</p")
+        # Force a space between words.
+        doc.content = doc.content.replace("<w", " <w")
+        # Force a line break after each line.
+        doc.content = doc.content.replace("</l>", "</l><br/>")
+        # Make sure that "indent"ed lines are indented.
+        doc.content = doc.content.replace('rend="indent">', 'rend="indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
         retval["document"] = doc
-        
         
         # Fetch the commentary for this document.
         q = CommentModel.all().filter("document = ", db.Key(key))
@@ -101,7 +106,8 @@ class DocumentHandler(RequestHandler):
             # Create a new document.
             document = DocumentModel()
             document.title = self.request.get("doc_title")
-            document.content = self.request.get("doc_content")
+            document.content = unicode( self.request.get("doc_content"), "utf-8")
+            #self.request.get("doc_content")
 
             # Try to parse the document's XML (at least make sure it's XML).
             dom_doc = minidom.parseString( document.content.encode("UTF-8") )

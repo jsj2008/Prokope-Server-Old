@@ -1,0 +1,34 @@
+<body>
+	<div1 n="10" type="Book">
+  <div2 n="4" type="Epigram">
+<lg type="elegiac couplet">
+<l n="1"><w id="10.4.1.1">Qui</w><w id="10.4.1.2">legis</w><w id="10.4.1.3"><rs type="title">Oedipoden</rs></w><w id="4.1.1.4">caligantem</w><w id="4.1.1.5">que</w><w id="4.1.1.6"><rs type="title">Thyesten</rs></w><pc>,</pc></l> <l n="2" rend="indent"><w id="10.4.2.1"><rs type ="title">Colchidas</rs></w><w id="10.4.2.2">et</w><w id="10.4.2.3"><rs type="title">Scyllas</rs></w><pc>,</pc><w id="10.4.2.4">quid</w><w id="10.4.2.5">nisi</w><w id="10.4.2.6">monstra</w><w id="10.4.2.7">legis</w><pc>?</pc></l>
+</lg>
+<lg type="elegiac couplet"> <l n="3"><w id="10.4.3.1">Quid</w><w id="10.4.3.2">tibi</w><w id="10.4.3.3">raptus</w><w id="10.4.3.4"><rs type="name">Hylas</rs></w><pc>,</pc><w id="10.4.3.5">quid</w><w id="10.4.3.6"><rs type="name">Parthenopaeus</rs></w><w id="10.4.3.7">et</w><w id="10.4.3.8"><rs type="name">Attis</rs></w><pc>,</pc></l> <l n="4" rend="indent"><w id="10.4.4.1">Quid</w><w id="10.4.4.2">tibi</w><w id="10.4.4.3">dormitor</w><w id="10.4.4.4">proderit</w><w id="10.4.4.5"><rs type="name">Endymion</rs></w><pc>?</pc></l>
+</lg>
+<lg type="elegiac couplet"><l n="5"><w id="10.4.5.1">Exutus</w><w id="10.4.5.2">ve</w><w id="10.4.5.3">puer</w>
+<w id="10.4.5.4">pinnis</w><w id="10.4.5.5">labentibus</w><pc>?</pc><w id="10.4.5.6">aut</w>
+<w id="10.4.5.7">qui</w>
+</l> 
+<l n="6" rend="indent">
+<w id="10.4.6.1">Odit</w><w id="10.4.6.2">amatrices</w><w id="10.4.6.3">
+<rs type="name">Hermaphroditus</rs></w><w id="10.4.6.4">aquas</w><pc>?</pc>
+</l>
+</lg>
+<lg type="elegiac couplet"><l n="7"><w id="10.4.7.1">Quid</w><w id="10.4.7.2">te</w><w id="10.4.7.3">vana</w>
+<w id="10.4.7.4">iuvant</w><w id="10.4.7.5">miserae</w><w id="10.4.7.6">ludibria</w>
+<w id="10.4.7.7">chartae</w><pc>?</pc>
+</l>
+<l n="8" rend="indent"><w id="10.4.8.1">Hoc</w>
+<w id="10.4.8.2">lege</w><pc>,</pc><w id="10.4.8.4">quod</w><w id="10.4.8.5">possit</w>
+<w id="10.4.8.6">dicere</w><w id="10.4.8.7">vita</w><quote><w id="10.4.8.8">Meum</w>
+<w id="10.4.8.9">est</w><pc>.</pc></quote></l>
+</lg>
+<lg type="elegiac couplet"> <l n="9"><w id="10.4.9.1">Non</w><w id="10.4.9.2">hic</w><w id="10.4.9.3">Centauros</w><pc>,</pc><w id="10.4.9.4">non</w><w id="10.4.9.5">Gorgonas</w><w id="10.4.9.6">Harpyias</w><w id="10.4.9.7">que</w></l> <l n="10" rend="indent"><w id="10.4.10.1">Invenies</w><pc>:</pc><w id="10.4.10.2">hominem</w><w id="10.4.10.3">pagina</w><w id="10.4.10.4">nostra</w><w id="10.4.10.5">sapit</w><pc>.</pc></l>
+</lg>
+<lg type="elegiac couplet">
+<l n="11"><w id="10.4.11.1">Sed</w><w id="10.4.11.2">non</w><w id="10.4.11.3">vis</w><pc>,</pc><w id="10.4.11.4"><rs type="name">Mamurra</rs></w><pc>,</pc><w id="10.4.11.5">tuos</w><w id="10.4.11.6">cognoscere</w><w id="10.4.11.7">mores</w></l> <l n="12" rend="indent"><w id="10.4.12.1">Nec</w><w id="10.4.12.2">te</w><w id="10.4.12.3">scire</w><pc>:</pc><w id="10.4.12.4">legas</w><w id="10.4.12.5"><rs type="title">Aetia <rs type="name">Callimachi</rs></rs></w><pc>.</pc></l>
+</lg>
+</div2>
+</div1>
+</body>
