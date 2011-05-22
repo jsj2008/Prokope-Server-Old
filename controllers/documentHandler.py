@@ -11,6 +11,7 @@ from models.documentModel import DocumentModel
 from models.commentModel import CommentModel
 from models.vocabModel import VocabModel
 from models.sidebarModel import SidebarModel
+import re
 from utility.templateLoader import TemplateLoader
 from xml.dom import minidom
 
@@ -30,14 +31,15 @@ class DocumentHandler(RequestHandler):
         
         # Fetch the document
         doc = db.get(key) 
-        # Convert "sections" into "p" (paragraphs).
-        doc.content = doc.content.replace("<section", "<p").replace("</section", "</p")
-        # Force a space between words.
-        doc.content = doc.content.replace("<w", " <w")
         # Force a line break after each line.
         doc.content = doc.content.replace("</l>", "</l><br/>")
         # Make sure that "indent"ed lines are indented.
-        doc.content = doc.content.replace('rend="indent">', 'rend="indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        #doc.content = doc.content.replace('rend="indent">', 'rend="indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+	# &#160; is the XML version of &nbsp.
+        doc.content = doc.content.replace('rend="indent">', 'rend="indent">&#160;&#160;&#160;&#160;&#160;&#160;')
+	# Convert words (w) to hyperlinks (a href).
+	# (?ims) turns on the case-insensitive, multiline, dot matches newline flags.
+	doc.content = re.sub(r'(?ims)<w\s+id="([0-9.]+)">([^>]+)</w>', r'<a href="\1">\2</a>', doc.content)
         retval["document"] = doc
         
         # Fetch the commentary for this document.

@@ -5,7 +5,7 @@ Copyright 2011 D. Robert Adams
 """
 
 import google.appengine.api.users
-import google.appengine.ext.webapp.template
+from google.appengine.ext.webapp import template
 import os
 import sys
 
@@ -40,7 +40,7 @@ class TemplateLoader(object):
          
         template_values['nickname'] = nickname
         template_values['url_link'] = url_link
-        return google.appengine.ext.webapp.template.render(path, template_values)
+        return template.render(path, template_values)
         
     #**********************************************************************
     """Renders the error template.  The only parameter required is the
